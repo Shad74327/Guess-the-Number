@@ -7,53 +7,53 @@ number = random.randint(0,101)
 difficulty_level = input("Type 'hard' or 'easy'> ")
 
 if difficulty_level == "hard":
-    """ Difficulty level Hard """
+    print("You have 5 attempts")
+elif difficulty_level == "easy":
+    print("You have 10 attempts.")
 
-    for x in range(5):
-        """ Here total 5 attempts available """
+def result(attempt, number, guess):
+    if attempt == 0:
+        print(f"The number was {number}")
+        print("You lose.")
+
+    elif guess > number:
+        print("Too High.")
+        print(f"You have {attempt} attempts left.")
+
+    elif guess < number:
+        print("Too Low.")
+        print(f"You have {attempt} attempts left.")
+
+    elif guess == number:
+        print("Congratulations! You win.")
+        return True
+        
+
+if difficulty_level == "hard":
+
+    x = 0
+    while x<5:
 
         attempt = 4 - x
         guess = int(input("Guess the number: "))
 
-        if attempt == 0:
-            print(f"The number was {number}")
-            print("You lose.")
-
-        elif guess > number:
-            print("Too High.")
-            print(f"You have {attempt} attempts left.")
-
-        elif guess < number:
-            print("Too Low.")
-            print(f"You have {attempt} attempts left.")
-
-        elif guess == number:
-            print("Congratulations! You win.")
-            break
+        game_finished = result(attempt, number, guess) 
         
+        if game_finished == True:
+            break
+
+        x+=1
 
 if difficulty_level == "easy":
-    """ Difficulty level easy """
 
-    for x in range(10):
-        """ Here total 10 attempts available """
+    x = 0
+    while x < 10:
 
         attempt = 9 - x
         guess = int(input("Guess the number: "))
 
-        if attempt == 0:
-            print(f"The number was {number}")
-            print("You lose.")
-
-        elif guess > number:
-            print("Too High.")
-            print(f"You have {attempt} attempts left.")
-
-        elif guess < number:
-            print("Too Low.")
-            print(f"You have {attempt} attempts left.")
-            
-        elif guess == number:
-            print("Congratulations! You win.")
-            break
+        game_finished = result(attempt, number, guess) 
         
+        if game_finished == True:
+            break
+        x+=1
